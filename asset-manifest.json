@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/megasandesham/static/css/main.557479bf.css",
+    "main.js": "/megasandesham/static/js/main.dab60541.js",
+    "index.html": "/megasandesham/index.html",
+    "main.557479bf.css.map": "/megasandesham/static/css/main.557479bf.css.map",
+    "main.dab60541.js.map": "/megasandesham/static/js/main.dab60541.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.557479bf.css",
+    "static/js/main.dab60541.js"
+  ]
+}
