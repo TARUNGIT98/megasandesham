@@ -8,20 +8,29 @@ import {
   FaSmog,
 } from "react-icons/fa";
 
-const WeatherInfo = ({ weatherData }) => {
+// Helper function to convert Celsius to Fahrenheit
+const convertToF = (tempC) => Math.round((tempC * 9) / 5 + 32);
+
+const WeatherInfo = ({ weatherData, unit = "C" }) => {
   if (!weatherData) return null;
 
   const { name, sys, main, weather } = weatherData;
   const condition = weather?.[0]?.main?.toLowerCase() || "";
-  const temperature = Math.round(main.temp);
-  const feelsLike = Math.round(main.feels_like);
+
+  // Convert temperature based on unit prop
+  const temperature =
+    unit === "F" ? convertToF(Math.round(main.temp)) : Math.round(main.temp);
+  const feelsLike =
+    unit === "F"
+      ? convertToF(Math.round(main.feels_like))
+      : Math.round(main.feels_like);
   const humidity = main.humidity;
   const windSpeed = weatherData.wind?.speed || 0;
 
-  // Choose icon and background based on weather condition
+  // Choose icon and background image based on weather condition
   let IconComponent = FaCloud;
   let backgroundImage =
-    "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=600"; // Default background
+    "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=600"; // Default
 
   if (condition.includes("clear")) {
     IconComponent = FaSun;
@@ -54,26 +63,30 @@ const WeatherInfo = ({ weatherData }) => {
   }
 
   return (
-    <div className="relative w-full max-w-xs overflow-hidden rounded-2xl p-6 shadow-lg backdrop-blur-sm bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300">
+    <div
+      className={`relative w-full max-w-xs overflow-hidden rounded-2xl p-6 shadow-lg backdrop-blur-sm bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300`}
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={backgroundImage} // Dynamic background image
+          src={backgroundImage}
           alt="weather background"
-          className="h-full w-full object-cover opacity-50" // Adjust opacity as needed
+          className="h-full w-full object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-black/10" /> {/* Light overlay */}
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
       {/* Content */}
       <div className="relative z-10">
-        {/* City and Temp */}
+        {/* City and Temperature */}
         <div className="flex justify-between items-start mb-4">
           <div>
             <h2 className="text-xl font-medium text-white/90">
               {name}, {sys.country}
             </h2>
-            <p className="text-4xl font-bold text-white mt-1">{temperature}°</p>
+            <p className="text-4xl font-bold text-white mt-1">
+              {temperature}°{unit}
+            </p>
           </div>
           <IconComponent className="text-white/80" size={32} />
         </div>
@@ -82,7 +95,9 @@ const WeatherInfo = ({ weatherData }) => {
         <div className="space-y-3 text-white/80">
           <div className="flex justify-between items-center">
             <span>Feels Like</span>
-            <span className="font-medium">{feelsLike}°</span>
+            <span className="font-medium">
+              {feelsLike}°{unit}
+            </span>
           </div>
           <div className="flex justify-between items-center">
             <span>Humidity</span>
