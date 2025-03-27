@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/megasandesham/static/css/main.557479bf.css",
-    "main.js": "/megasandesham/static/js/main.dab60541.js",
+    "main.css": "/megasandesham/static/css/main.996c11a6.css",
+    "main.js": "/megasandesham/static/js/main.fd98edef.js",
     "index.html": "/megasandesham/index.html",
-    "main.557479bf.css.map": "/megasandesham/static/css/main.557479bf.css.map",
-    "main.dab60541.js.map": "/megasandesham/static/js/main.dab60541.js.map"
+    "main.996c11a6.css.map": "/megasandesham/static/css/main.996c11a6.css.map",
+    "main.fd98edef.js.map": "/megasandesham/static/js/main.fd98edef.js.map"
   },
   "entrypoints": [
-    "static/css/main.557479bf.css",
-    "static/js/main.dab60541.js"
+    "static/css/main.996c11a6.css",
+    "static/js/main.fd98edef.js"
   ]
 }
